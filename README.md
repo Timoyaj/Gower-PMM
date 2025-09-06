@@ -105,6 +105,6 @@ with Multiple Auxiliary Variables in Two-Phase Sampling [PhD Thesis].
 
 ## Contact
 
-[Your Name] - [your.email@example.com]
+[Your Name] - [tertimothy@gmail.com]
 
-Project Link: [https://github.com/yourusername/gkp-pmm](https://github.com/yourusername/gkp-pmm)
+Project Link: [https://github.com/timmoyaj/gkp-pmm](https://github.com/Timoyaj/gkp-pmm)
