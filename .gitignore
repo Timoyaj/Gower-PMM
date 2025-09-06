@@ -1,0 +1,63 @@
+# R Environment
+.RData
+.Rhistory
+.Rprofile
+.Rproj.user/
+.Renviron
+
+# RStudio
+.Rproj
+*.Rproj
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Package development
+*.tar.gz
+*.Rcheck/
+check/
+*.Rout
+
+# Logs
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python (if any)
+__pycache__/
+*.pyc
+*.pyo
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
+
+# Data files (uncomment if you want to ignore data)
+# *.csv
+# *.rds
+# *.RData
