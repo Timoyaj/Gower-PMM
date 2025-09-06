@@ -2,11 +2,14 @@
   "name": "R Simulation Codespace",
   "image": "rocker/r-ver:latest",
   "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-      "packages": "mice,dplyr,ggplot2,tidyr,ranger,devtools,future,furrr"
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "cmake,git,libcurl4-openssl-dev,libfontconfig1-dev,libfreetype6-dev,libfribidi-dev,libgit2-dev,libharfbuzz-dev,libpng-dev,libssl-dev,libtiff-dev,libwebp-dev,libx11-dev,libxml2-dev,pandoc"
     },
     "ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
       "version": "latest"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+      "packages": "mice,dplyr,ggplot2,tidyr,ranger,devtools,future,furrr,clustMixType"
     }
   },
   "customizations": {
@@ -15,7 +18,5 @@
         "reditors.vscode-r"
       ]
     }
-  },
-  // Run a command after creation to install your custom package dependencies if any
-  "postCreateCommand": "R -e \"install.packages('clustMixType', dependencies=TRUE)\""
+  }
 }
