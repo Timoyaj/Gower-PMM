@@ -1,0 +1,6 @@
+# This file configures the C++ compiler.
+# It enables C++11 and OpenMP for parallel processing.
+CXX_STD = CXX11
+
+PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
+PKG_LIBS = -lRblas -lRlapack $(FLIBS) $(SHLIB_OPENMP_CXXFLAGS)

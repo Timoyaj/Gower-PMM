@@ -1,0 +1,65 @@
+title: "Advanced Imputation with gowerpmm" output: rmarkdown::html_vignette vignette: > %\VignetteIndexEntry{Advanced Imputation with gowerpmm} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+Introduction
+This vignette introduces the gowerpmm package, a powerful tool for imputing missing data in complex, mixed-type datasets. It provides a new imputation method for the mice package that combines the strengths of three robust statistical techniques:
+
+Gower's Dissimilarity: A metric that can handle a mix of numeric, categorical, and ordinal variables.
+
+Predictive Mean Matching (PMM): A "hot-deck" imputation method that ensures imputed values are plausible.
+
+Automated Weight Optimization: A novel technique to balance the influence of each variable in the dissimilarity calculation, leading to more accurate imputations.
+
+The Problem: Imputing Mixed-Type Data
+Real-world datasets are often messy and contain a mix of different variable types. Standard imputation methods can struggle in this environment. The gowerpmm method is designed specifically for this challenge.
+
+The gowerpmm Method
+The core of the package is the mice.impute.gowerpmm() function. When used within mice, it works as follows:
+
+For a variable with missing data, it identifies a set of predictor variables.
+
+It then uses a Genetic Algorithm to find the optimal set of weights for these predictors. The "best" weights are those that create the most balanced Gower's dissimilarity metric.
+
+Using this optimally weighted Gower's distance, it finds the k most similar observations (donors) for each observation with a missing value (recipient).
+
+Finally, it randomly selects one of the donors and uses its observed value as the imputation.
+
+A Practical Example
+Let's walk through an example. First, we'll load the necessary packages and create some sample data with missing values.
+
+library(gowerpmm)
+library(mice)
+
+set.seed(123)
+data <- data.frame(
+  income = rnorm(100, 50000, 15000),
+  education = factor(sample(c("High School", "Bachelor's", "Master's"), 100, replace = TRUE)),
+  satisfaction = ordered(sample(1:7, 100, replace = TRUE)),
+  age = rnorm(100, 40, 12)
+)
+
+# Introduce 20% missing values in 'income'
+data$income[sample(1:100, 20)] <- NA
+
+Now, we can run the mice function, specifying "gowerpmm" as the method for our target variable income.
+
+# We use small m and maxit for this example. In practice, you should use more.
+imp <- mice(data, method = c("gowerpmm", "", "", ""), m = 2, maxit = 2, printFlag = FALSE)
+
+The first time gowerpmm is called for a set of predictors, it will run the optimization, which might take a moment. The resulting optimal weights are then cached and reused for subsequent iterations, making the process efficient.
+
+We can now inspect the completed data:
+
+completed_data <- complete(imp)
+summary(completed_data$income)
+
+Assumptions and Limitations
+The gowerpmm method, like most methods in mice, assumes that the data are Missing At Random (MAR). This means that the probability of a value being missing can depend on the observed data, but not on the missing data itself.
+
+If you suspect your data are Missing Not At Random (MNAR), it is crucial to conduct a sensitivity analysis to assess how your results might change under different assumptions about the missing data mechanism.
+
+Conclusion
+The gowerpmm package provides a powerful, methodologically sound, and easy-to-use tool for imputing missing values in mixed-type datasets. By automatically optimizing the Gower weights, it offers a more robust and accurate alternative to standard imputation methods in complex, real-world scenarios.

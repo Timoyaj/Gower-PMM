@@ -1,0 +1,12 @@
+Package: gowerpmm
+Title: Imputation by Gower Distance Predictive Mean Matching
+Version: 0.1.0
+Authors@R: person("Yaji Timothy T.", email = "tertimothy@gmail.com", role = c("aut", "cre"))
+Description: An implementation of the Gower-PMM missing data imputation method for mixed-type data, featuring an optional, automatic weight optimization based on rank correlation balancing. To be used within the 'mice' framework.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.0.0), mice, FD, GA
+LinkingTo: Rcpp, RcppArmadillo
+Imports: Rcpp, parallel, doParallel, digest, stats, utils, GA
+RoxygenNote: 7.3.2
