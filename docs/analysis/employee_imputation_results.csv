@@ -1,0 +1,5 @@
+"Method","Overall_RMSE","Overall_MAE","JobPerf_RMSE","JobPerf_MAE","JobPerf_Bias","Time_seconds"
+"MICE PMM",2.5981,2.2094,3.7346,2.9571,2.689,0.0301
+"MICE CART",1.8166,1.5368,3.0948,2.5354,2.064,0.0322
+"Mean/Mode",1.7373,1.5372,3.2892,2.889,2.889,0.0209
+"Regression",0,0,0,0,0,0.0302
